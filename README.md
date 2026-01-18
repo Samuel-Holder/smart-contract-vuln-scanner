@@ -21,14 +21,11 @@ A comprehensive smart contract vulnerability scanner that detects security issue
 git clone https://github.com/yourusername/solidity-scanner.git
 cd solidity-scanner
 
-# Install dependencies
-pip install -r requirements.txt
-
 # Scan a contract
-python src/scanner.py examples/contracts/VulnerableVault.sol
+python main.py contracts/VulnerableVault.sol
 
 # Generate detailed report
-python src/scanner.py examples/contracts/VulnerableVault.sol -o report.md
+python main.py contracts/VulnerableVault.sol -o report.md
 ```
 
 ## 📋 Detected Vulnerabilities
@@ -82,56 +79,46 @@ Risk Score: 67/100
 Risk Level: HIGH
 ```
 
-## 🔧 Configuration
-
-Create a `scanner.config.json` to customize detection:
-
-```json
-{
-  "severity_threshold": "Medium",
-  "ignore_patterns": ["test_", "mock_"],
-  "custom_rules": true,
-  "output_format": "markdown"
-}
-```
-
 ## 📁 Project Structure
 
 ```
 solidity-scanner/
+├── main.py             # Entry point - run this
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── pytest.ini
 ├── src/
-│   ├── scanner.py          # Main scanner entry point
-│   ├── detectors/          # Vulnerability detection modules
-│   └── reporters/          # Report generation
+│   ├── __init__.py
+│   └── scanner.py      # Main scanner logic
 ├── tests/
-│   ├── test_scanner.py     # Unit tests
-│   └── contracts/          # Test contracts
-├── examples/
-│   └── contracts/          # Example vulnerable contracts
-├── docs/
-│   ├── VULNERABILITIES.md  # Detailed vulnerability guide
-│   └── CONTRIBUTING.md     # Contribution guidelines
-└── README.md
+│   ├── __init__.py
+│   └── test_scanner.py # Unit tests
+├── contracts/          # Example contracts
+│   ├── VulnerableVault.sol
+│   └── SecureVault.sol
+└── docs/
+    ├── VULNERABILITIES.md
+    └── CONTRIBUTING.md
 ```
 
 ## 🧪 Running Tests
 
 ```bash
+# Install test dependencies
+pip install -r requirements-dev.txt
+
 # Run all tests
 python -m pytest tests/ -v
 
 # Run with coverage
 python -m pytest tests/ --cov=src --cov-report=html
-
-# Run specific test category
-python -m pytest tests/test_reentrancy.py -v
 ```
 
 ## 📖 Documentation
 
 - [Vulnerability Reference](docs/VULNERABILITIES.md) - Detailed explanations of each vulnerability
 - [Contributing Guide](docs/CONTRIBUTING.md) - How to contribute new detectors
-- [API Reference](docs/API.md) - Scanner API documentation
 
 ## 🤝 Contributing
 
@@ -163,4 +150,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Built with ❤️ for the Web3 security community**
+**Built with ❤️ by Raven Tech Solutions Ltd**
