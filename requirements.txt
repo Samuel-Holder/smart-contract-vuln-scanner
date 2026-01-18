@@ -1,0 +1,6 @@
+# Core dependencies
+# None required - scanner uses only Python standard library
+
+# Optional enhancements
+# slither-analyzer>=0.9.0  # For additional analysis
+# mythril>=0.24.0          # For symbolic execution
